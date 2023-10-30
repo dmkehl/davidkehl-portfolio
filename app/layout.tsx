@@ -15,13 +15,7 @@ export const metadata: Metadata = {
     description: "Senior Full Stack Software Engineer open to work",
     url: "https://davidkehl.com",
     siteName: "davidkehl.com",
-    images: [
-      {
-        url: "https://chronark.com/og.png",
-        width: 1920,
-        height: 1080,
-      },
-    ],
+    images: [],
     locale: "en-US",
     type: "website",
   },
