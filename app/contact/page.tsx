@@ -1,5 +1,5 @@
 "use client";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, Twitter } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
@@ -9,9 +9,9 @@ import { faMedium, faStackOverflow } from "@fortawesome/free-brands-svg-icons";
 const socials = [
   {
     icon: <Linkedin size={20} />,
-    href: "https://www.linkedin.com/in/davidmkehl/",
+    href: "https://www.linkedin.com/in/dmkehl/",
     label: "LinkedIn",
-    handle: "davidmkehl",
+    handle: "dmkehl",
   },
   {
     icon: <Mail size={20} />,
@@ -38,10 +38,10 @@ const socials = [
     handle: "@dmkehl",
   },
   {
-    icon: <Twitter size={20} />,
-    href: "https://twitter.com/dmkehl",
-    label: "Twitter",
-    handle: "@dmkehl",
+    icon: <Phone size={20} />,
+    href: "tel:(304) 566-9519",
+    label: "Phone",
+    handle: "(304) 566-9519",
   },
 ];
 
