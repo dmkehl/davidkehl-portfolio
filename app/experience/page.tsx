@@ -1,11 +1,23 @@
-"use client";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Navigation } from "../components/nav";
 import { allExperiences } from "@/.contentlayer/generated";
+import { Card } from "../components/card";
+import { Article } from "./article";
+import exp from "constants";
 
 export default function ExperiencePage() {
-  useEffect(() => {
-    console.log(allExperiences);
+  const experiences = allExperiences.filter((e) => e.published);
+  experiences.sort((a, b) => {
+    const dateA = new Date(a.endDate ? a.endDate : new Date() || 0);
+    const dateB = new Date(b.endDate ? b.endDate : new Date() || 0);
+
+    if (dateA < dateB) {
+      return 1;
+    }
+    if (dateA > dateB) {
+      return -1;
+    }
+    return 0;
   });
   return (
     <div className="relative pb-16">
@@ -15,7 +27,19 @@ export default function ExperiencePage() {
           <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
             Experience
           </h2>
-          <p className="mt-4 text-zinc-400">Experience subheading here</p>
+          <p className="mt-4 text-zinc-400">
+            A fully inclusive list of my work history and skills.
+          </p>
+        </div>
+        <div className="w-full h-px bg-zinc-800" />
+        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-1">
+          <div className="grid grid-cols-1 gap-4">
+            {experiences.map((experience) => (
+              <Card key={experience.slug}>
+                <Article experience={experience} />
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>

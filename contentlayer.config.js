@@ -1,4 +1,8 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -46,6 +50,20 @@ export const Project = defineDocumentType(() => ({
   computedFields,
 }));
 
+const Contribution = defineNestedType(() => ({
+  name: "Contribution",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+  },
+}));
+
 export const Experience = defineDocumentType(() => ({
   name: "Experience",
   filePathPattern: "./experience/**/*.mdx",
@@ -70,13 +88,9 @@ export const Experience = defineDocumentType(() => ({
     published: {
       type: "boolean",
     },
-    // Add another field that will hold an array of strings
     contributions: {
       type: "list",
-      of: {
-        type: "string",
-      },
-      required: true,
+      of: Contribution,
     },
     startDate: {
       type: "date",

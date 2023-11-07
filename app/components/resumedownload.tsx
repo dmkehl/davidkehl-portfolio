@@ -11,7 +11,7 @@ export default function ResumeDownload() {
   };
   return (
     <button
-      className="flex flex-row gap-2 text-zinc-200 hover:text-zinc-50 py-2 px-4 text-lg"
+      className="flex flex-row gap-2 text-zinc-200 hover:text-zinc-50 py-2 px-4"
       onClick={handleDownload}
     >
       Resume
