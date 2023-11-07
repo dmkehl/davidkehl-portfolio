@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import Particles from "./components/particles";
+import ResumeDownload from "./components/resumedownload";
+import { Card } from "./components/card";
 
 const navigation = [
   { name: "About", href: "/about" },
@@ -48,9 +50,13 @@ export default function Home() {
           >
             beacon
           </Link>
-          {""}, a social media app for veterans and service members, at night.
+          {""}, a social media app for veterans and service members, in my spare
+          time.
         </h2>
       </div>
+      <Card>
+        <ResumeDownload />
+      </Card>
     </div>
   );
 }
