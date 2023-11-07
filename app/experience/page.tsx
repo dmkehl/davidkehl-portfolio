@@ -1,6 +1,12 @@
+"use client";
+import { useEffect } from "react";
 import { Navigation } from "../components/nav";
+import { allExperiences } from "@/.contentlayer/generated";
 
 export default function ExperiencePage() {
+  useEffect(() => {
+    console.log(allExperiences);
+  });
   return (
     <div className="relative pb-16">
       <Navigation />
