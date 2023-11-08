@@ -38,7 +38,7 @@ export const Article: React.FC<Props> = ({ experience }) => {
           {experience.title}
         </h2>
         <h4 className="z-20 text-md font-light duration-1000 lg:text-lg text-zinc-400 group-hover:text-white font-normal">
-          {experience.company} - {experience.location}
+          {experience.company}
         </h4>
         <p className="z-20 mt-4 text-sm duration-1000 text-zinc-400 group-hover:text-zinc-200">
           {experience.description}
