@@ -79,7 +79,30 @@ export const Header: React.FC<Props> = ({ experience }) => {
       <div className="container mx-auto relative isolate overflow-hidden  py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl font-display">
+            <span className="text-xs duration-1000 text-zinc-200 group-hover:text-white group-hover:border-zinc-300 drop-shadow-orange">
+              {experience.startDate ? (
+                <time dateTime={new Date(experience.startDate).toISOString()}>
+                  {Intl.DateTimeFormat(undefined, {
+                    year: "numeric",
+                    month: "short",
+                  }).format(new Date(experience.startDate))}
+                </time>
+              ) : (
+                <span>SOON</span>
+              )}{" "}
+              -{" "}
+              {experience.endDate ? (
+                <time dateTime={new Date(experience.endDate).toISOString()}>
+                  {Intl.DateTimeFormat(undefined, {
+                    year: "numeric",
+                    month: "short",
+                  }).format(new Date(experience.endDate))}
+                </time>
+              ) : (
+                <span>Current</span>
+              )}
+            </span>
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl font-display pt-2">
               {experience.company}
             </h1>
             <h6 className="text-normal tracking-tight text-zinc-300 sm:text-2xl">
@@ -89,16 +112,6 @@ export const Header: React.FC<Props> = ({ experience }) => {
               {experience.description}
             </p>
           </div>
-
-          {/* <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
-              {links.map((link) => (
-                <Link target="_blank" key={link.label} href={link.href}>
-                  {link.label} <span aria-hidden="true">&rarr;</span>
-                </Link>
-              ))}
-            </div>
-          </div> */}
         </div>
       </div>
     </header>
