@@ -2,6 +2,7 @@
 import { ArrowLeft, Eye, Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { SkillCard } from "@/app/components/skillcard";
 
 type Props = {
   experience: {
@@ -19,6 +20,17 @@ type Props = {
 export const Header: React.FC<Props> = ({ experience }) => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
+
+  const filteredSkills = experience.skills.filter((skill) => {
+    try {
+      skill = skill.replace(/#/g, "sharp");
+      console.log(skill);
+      require(`public/brands/${skill.toLowerCase()}.png`);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  });
 
   useEffect(() => {
     if (!ref.current) return;
@@ -111,6 +123,26 @@ export const Header: React.FC<Props> = ({ experience }) => {
             <p className="mt-6 text-normal leading-8 text-zinc-300">
               {experience.description}
             </p>
+          </div>
+          <div className="text-center w-full">
+            {filteredSkills.length > 0 ? (
+              <div>
+                <h4 className="mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-white mb-4">
+                  Tech Used:
+                </h4>
+                <div className="flex flex-row gap-4 flex-wrap w-3/4 m-auto justify-center">
+                  {filteredSkills?.map((skill) => (
+                    <SkillCard
+                      key={skill}
+                      skill={skill}
+                      image={`/brands/${skill
+                        .replace(/#/g, "sharp")
+                        .toLowerCase()}.png`}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
