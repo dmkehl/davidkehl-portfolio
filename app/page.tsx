@@ -49,8 +49,8 @@ export default function Home() {
           >
             beacon
           </Link>
-          {""}, a social media app for veterans and service members, in my spare
-          time.
+          {""}, a social media platform for veterans and service members, in my
+          spare time.
         </h2>
       </div>
     </div>
