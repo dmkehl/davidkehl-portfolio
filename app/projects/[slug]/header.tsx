@@ -2,6 +2,7 @@
 import { ArrowLeft, Eye, Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { SkillCard } from "@/app/components/skillcard";
 
 type Props = {
   project: {
@@ -9,6 +10,7 @@ type Props = {
     title: string;
     description: string;
     repository?: string;
+    skills: string[];
   };
 
   views: number;
@@ -16,6 +18,19 @@ type Props = {
 export const Header: React.FC<Props> = ({ project, views }) => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
+
+  const filteredSkills = project.skills.filter((skill) => {
+    try {
+      skill = skill.replace(/#/g, "sharp");
+      console.log(skill);
+      require(`public/brands/${skill.toLowerCase()}.png`);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  });
+
+  console.log(filteredSkills);
 
   const links: { label: string; href: string }[] = [];
   if (project.repository) {
@@ -108,6 +123,26 @@ export const Header: React.FC<Props> = ({ project, views }) => {
             <p className="mt-6 text-lg leading-8 text-zinc-300">
               {project.description}
             </p>
+          </div>
+          <div className="text-center w-full">
+            {filteredSkills.length > 0 ? (
+              <div>
+                <h4 className="mt-8 scroll-m-20 text-lg font-semibold tracking-tight text-white mb-4">
+                  Tech Used:
+                </h4>
+                <div className="flex flex-row gap-4 flex-wrap w-3/4 m-auto justify-center">
+                  {filteredSkills?.map((skill) => (
+                    <SkillCard
+                      key={skill}
+                      skill={skill}
+                      image={`/brands/${skill
+                        .replace(/#/g, "sharp")
+                        .toLowerCase()}.png`}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
 
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">

@@ -46,6 +46,13 @@ export const Project = defineDocumentType(() => ({
     repository: {
       type: "string",
     },
+    skills: {
+      type: "list",
+      of: {
+        type: "string",
+      },
+      required: true,
+    },
   },
   computedFields,
 }));

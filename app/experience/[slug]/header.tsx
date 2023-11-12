@@ -127,7 +127,7 @@ export const Header: React.FC<Props> = ({ experience }) => {
           <div className="text-center w-full">
             {filteredSkills.length > 0 ? (
               <div>
-                <h4 className="mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-white mb-4">
+                <h4 className="mt-8 scroll-m-20 text-lg font-semibold tracking-tight text-white mb-4">
                   Tech Used:
                 </h4>
                 <div className="flex flex-row gap-4 flex-wrap w-3/4 m-auto justify-center">
