@@ -22,15 +22,12 @@ export const Header: React.FC<Props> = ({ project, views }) => {
   const filteredSkills = project.skills.filter((skill) => {
     try {
       skill = skill.replace(/#/g, "sharp");
-      console.log(skill);
       require(`public/brands/${skill.toLowerCase()}.png`);
       return true;
     } catch (err) {
       return false;
     }
   });
-
-  console.log(filteredSkills);
 
   const links: { label: string; href: string }[] = [];
   if (project.repository) {

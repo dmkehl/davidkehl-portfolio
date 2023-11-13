@@ -24,7 +24,6 @@ export const Header: React.FC<Props> = ({ experience }) => {
   const filteredSkills = experience.skills.filter((skill) => {
     try {
       skill = skill.replace(/#/g, "sharp");
-      console.log(skill);
       require(`public/brands/${skill.toLowerCase()}.png`);
       return true;
     } catch (err) {

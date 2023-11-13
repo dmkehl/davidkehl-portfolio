@@ -7,7 +7,6 @@ interface SkillCardProps {
 }
 
 export const SkillCard: React.FC<SkillCardProps> = ({ skill, image }) => {
-  console.log(image);
   return (
     <div className="inline-block">
       <Card>
